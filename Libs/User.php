@@ -21,10 +21,11 @@ class User {
     private $_id = NULL;
     private $_name = NULL;
     private $_mail = NULL;
+	private $_profilePic = NULL;
     private $_passwordHash = NULL;
     
     /**
-     * __construct
+     * __construct()
      * 
      * Constructor
      * @param void
@@ -36,7 +37,7 @@ class User {
     }
 
     /**
-     * User::set
+     * User::set()
      * 
      * Set user data
      * @param array $userData
@@ -44,10 +45,14 @@ class User {
      */
     public function set( array $userData ) {
         if ( isset( $userData ) ) {
+			if ( !array_key_exists( 'profilePic', $userData ) )
+					$userData['profilePic'] = NULL;
+			
             if ( isset( $userData['id'], $userData['name'], $userData['mail'], $userData['passwordHash'] ) ) {
                 $this->_id              = $userData['id'];
                 $this->_name            = $userData['name'];
                 $this->_mail            = $userData['mail'];
+				$this->_profilePic		= $userData['profilePic'];
                 $this->_passwordHash    = $userData['passwordHash'];
 
                 return true;
@@ -58,7 +63,7 @@ class User {
     }
 
     /**
-     * User::get
+     * User::get()
      * 
      * Get user data
      * @param void
@@ -69,12 +74,13 @@ class User {
             'id'            => $this->_id,
             'name'          => $this->_name,
             'mail'          => $this->_mail,
+			'profilePic'	=> $this->_profilePic,
             'passwordHash'  => $this->_passwordHash
         );
     }
 
     /**
-     * User::checkCredential
+     * User::checkCredential()
      * 
      * Check user credential
      * @param string $password
