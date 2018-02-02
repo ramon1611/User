@@ -5,17 +5,20 @@
  * File Created: Tuesday, 19th December 2017 12:44:29 pm
  * @author ramon1611
  * -----
- * Last Modified: Thursday, 18th January 2018 11:06:56 am
+ * Last Modified: Friday, 2nd February 2018 11:14:27 am
  * Modified By: ramon1611
  */
 
+/**
+ * Namespace ramon1611
+ */
 namespace ramon1611\Libs;
 
 /**
- * Class ramon1611\Libs\User
+ * Class User
  * 
  * @api
- * @package user
+ * @package User
  */
 class User {
     private $_id = NULL;
@@ -25,10 +28,9 @@ class User {
     private $_passwordHash = NULL;
     
     /**
-     * __construct()
-     * 
      * Constructor
-     * @param void
+     * 
+     * @param array $userData Array of user data. Default is NULL
      * @return void
      */
     public function __construct( array $userData = NULL ) {
@@ -37,10 +39,9 @@ class User {
     }
 
     /**
-     * User::set()
-     * 
      * Set user data
-     * @param array $userData
+     * 
+     * @param array $userData Array of user data
      * @return bool
      */
     public function set( array $userData ) {
@@ -63,11 +64,10 @@ class User {
     }
 
     /**
-     * User::get()
-     * 
      * Get user data
+     * 
      * @param void
-     * @return array
+     * @return array Returns an array of user data
      */
     public function get() {
         return array(
@@ -80,10 +80,9 @@ class User {
     }
 
     /**
-     * User::checkCredential()
-     * 
      * Check user credential
-     * @param string $password
+     * 
+     * @param string $password Plain text password
      * @return bool
      */
     public function checkCredential( string $password ) {
